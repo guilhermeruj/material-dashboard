@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./node_modules/img/favicon.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/compiler/bootstrap.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script>
+      
+    </script>
+
+    <title>Ouvidoria</title>
+  </head>
+  <body>
+
+    <section class="my-section">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <img src="./node_modules/img/ouvidoria.png" alt="Imagem do logotipo" class="img-fluid max-width-100">
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="row">
+         <form action="cadastro_protocolo.php" method="POST" enctype="multipart/form-data">
+          <div class="container form-style">
+             
+            <div class="row">
+              <div class="alert alert-dark text-end" role="alert">
+                Ouvidoria | <a href="saearaguari.org" class="btn btn-dark">Sair</a>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <b class="subtitulo" style="color: red;">Informações:</b>
+              </div>
+            </div>
+            <form>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <p class="fw-bold mb-2">Identificação:</p>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="anonimato" name="identificacao" value="anonimato" required>
+                    <label class="form-check-label" for="anonimato">Desejo anonimato</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="sigilo" name="identificacao" value="sigilo">
+                    <label class="form-check-label" for="sigilo">Desejo sigilo dos dados que me identificam</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="identificar" name="identificacao" value="identificar">
+                    <label class="form-check-label" for="identificar">Vou me identificar</label>
+                  </div>
+                </div>
+              </div>
+              <hr class="mb-4">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="tipo-solicitacao" class="form-label">Tipo de solicitação:</label>
+                  <select id="tipo-solicitacao" name="tipo-solicitacao" class="form-select">
+                    <option value="selecione">Selecione</option>
+                    <option value="denuncia">Denúncia</option>
+                    <option value="elogio">Elogio</option>
+                    <option value="reclamacao">Reclamação</option>
+                    <option value="sugestao">Sugestão</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="nome" class="form-label">Nome:</label>
+                  <input type="text" id="nome" name="nome" class="form-control">
+                </div>
+                <div class="col-md-3">
+                  <label for="rg" class="form-label">RG:</label>
+                  <input type="text" id="rg" name="rg" class="form-control">
+                </div>
+                <div class="col-md-3">
+                  <label for="cpf" class="form-label">CPF:</label>
+                  <input type="text" id="cpf" name="cpf" class="form-control" onkeyup="this.value = mascaraCPF(this.value)">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="tratamento" class="form-label">Tratamento:</label>
+                  <select id="tratamento" name="tratamento" class="form-select">
+                    <option value="senhor">Senhor</option>
+                    <option value="senhora">Senhora</option>
+                    <option value="voce">Você</option>
+                  </select>
+                </div>
+            
+            
+                <div class="col-md-3">
+                  <label for="sexo" class="form-label">Sexo:</label>
+                  <select id="sexo" name="sexo" class="form-select">
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outros">Outros</option>
+                  </select>
+                </div>
+              </div>
+            
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="telefone-fixo" class="form-label">Telefone fixo:</label>
+                  <input type="text" id="telefone-fixo" name="telefone-fixo" class="form-control">
+                </div>
+            
+                <div class="col-md-3">
+                  <label for="celular" class="form-label">Celular:</label>
+                  <input type="text" id="celular" name="celular" class="form-control">
+                </div>
+            
+                <div class="col-md-6">
+                  <label for="email" class="form-label">E-mail:</label>
+                  <input type="email" id="email" name="email" class="form-control">
+                </div>
+              </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <b class="subtitulo">Endereço</b>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label id="labelLogradouro" for="logradouro" class="form-label">Logradouro:</label>
+                <input id="logradouro" name="logradouro" title="Logradouro" class="form-control" size="200" maxlength="200" type="text" required>
+              </div>
+              <div class="col-md-2">
+                <label id="labelNumero" for="numero" class="form-label">Número:</label>
+                <input id="numero" name="numero" title="Número" size="10" class="form-control" maxlength="10" type="text" onkeyup="this.value=formatNumberOnly(this.value);" required>
+              </div>
+              <div class="col-md-4">
+                <label id="labelComplemento" for="complemento" class="form-label">Complemento:</label>
+                <input id="complemento" name="complemento" title="Complemento" class="form-control" size="30" maxlength="30" type="text">
+              </div>
+            </div>
+            <br>
+            
+            <div class="row">
+              <div class="col-md-4">
+                <label id="labelBairro" for="bairro" class="form-label">Bairro:</label>
+                <input id="bairro" name="bairro" title="Bairro" class="form-control" size="70" maxlength="100" type="text" required>
+              </div>
+              <div class="col-md-4">
+                <label id="labelUf" for="uf" class="form-label">Estado:</label>
+                  <select id="uf" name="uf" title="UF" class="form-control" required>
+                    <option value="">[Selecione]</option>
+                  </select>
+              </div>
+              <div id="bloco-cidade" class="col-md-4">
+                <label id="labelCidade" class="form-label" >Cidade:</label>
+                <select id="municipio" name="municipio" title="Município" class="form-control" required>
+                  <option value="">[Selecione]</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            
+            <div class="row">
+              <div class="col-md-3">
+                <label id="labelCep" class="form-label" for="cep">CEP:</label>
+                <input id="cep" name="cep" title="CEP" class="form-control" size="10" maxlength="10" type="text" onkeyup="this.value=formatCEP(this.value);">
+              </div>
+            </div>
+            <hr>
+            
+            <div class="row mb-3">
+              <div class="col-md-12">
+                <label id="labelDescricao" for="descricao" class="form-label">Descrição:</label>
+                <textarea id="descricao" name="descricao" title="Descrição" class="form-control" rows="5"></textarea>
+              </div>
+            </div>
+            
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label id="labelAnexo" for="anexo" class="form-label">Anexar arquivo:</label>
+                <input id="anexo" name="anexo" title="Anexo" class="form-control" type="file">
+              </div>
+            </div>
+            
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </div>
+              <div class="col-md-6">
+                <button type="reset" class="btn btn-secondary">Limpar</button>
+              </div><hr/>
+            </div>
+          </div><br/>
+    
+</form>
+     </div>
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/popper.js/dist/popper.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/bootstrap/js/src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./node_modules/img/favicon.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/compiler/bootstrap.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script>
+      
+    </script>
+
+    <title>E-Sic</title>
+  </head>
+  <body>
+    <div class="container">
+    <div class="row">
+      <div class="mb-3">
+        <p class="h1 text-center"></p>
+      </div>
+    </div>
+      <div class="row">
+          <div class="logo-superior">
+            <img class="img-fluid" src="./node_modules/img/fale_sae.png" alt="">
+          </div>
+         <form action="cadastro_protocolo.php" method="POST" enctype="multipart/form-data">
+          <div class="container fundo-cinza">
+             
+            <div class="row">
+              <div class="alert alert-dark text-end" role="alert">
+                <span class="visually-hidden">Registro de Solicitação E-Sic</span>
+                <h3>Registro de Solicitação E-Sic
+                <a href="https://saearaguari.com.br" class="btn btn-dark" aria-label="Sair do Registro de Solicitação e voltar para pagina principal">Sair</a></h3>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="subtitulo" >Informações:</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <span class="required-asterisk" aria-hidden="true">*Para realizar o acompanhamento da solicitação, é necessário informar o e-mail.</span>
+                  <!-- * Para realizar o acompanhamento da solicitação, é necessário informar o e-mail. -->
+                </label>
+              </div>
+            </div>
+            <hr>
+            
+            <div class="row">
+              <div class="col-md-12 espacamento-subtitulo">
+                <span class="visually-hidden">Inicio do registo de dados pessoais</span>
+                <h4 class="subtitulo">Dados Pessoais</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="nome" class="form-label">
+                  Nome:
+                  <span class="required-asterisk" aria-hidden="true">*</span>
+                </label>
+                <input id="nome" name="nome" title="Escreva seu nome" class="form-control adicionaBorda" size="100" maxlength="100" type="text" required>
+              </div>
+              
+            </div>
+            <br>
+            
+            <div class="row">
+              <div class="col-md-6">
+                
+                <label id="labelEmail" for="email" class="form-label">
+                  E-mail:
+                  <span class="required-asterisk" aria-hidden="true">*</span>
+                </label>
+                <input id="email" name="email" title="E-mail" class="form-control" size="100" maxlength="100" type="text" required>
+              </div>
+              <div class="col-md-3">
+                <label id="labelTelefone" for="telefone" class="form-label">Telefone:</label>
+                <input id="telefone" name="telefone" title="Escreva seu telefone" class="form-control" size="20" maxlength="20" type="text" onkeyup="this.value=formatPhoneNumber(this.value);" required>
+              </div>
+            </div>
+            <hr>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <span class="visually-hidden">Inicio do registo de endereço</span>
+                <h4 class="subtitulo">Endereço</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="logradouro" class="form-label">
+                  Logradouro:
+                  <span class="required-asterisk" aria-hidden="true">*</span>
+                </label>
+                <input id="logradouro" name="logradouro" title="Escreva o logradouro" class="form-control" size="200" maxlength="200" type="text" required>
+              </div>
+              <div class="col-md-2">
+                <label for="numero" class="form-label">
+                  Número:
+                  <span class="required-asterisk" aria-hidden="true">*</span>
+                </label>
+                <input id="numero" name="numero" title="Escreva o número" size="10" class="form-control" maxlength="10" type="text" onkeyup="this.value=formatNumberOnly(this.value);" required>
+              </div>
+              <div class="col-md-4">
+                <label id="labelComplemento" for="complemento" class="form-label">Complemento:</label>
+                <input id="complemento" name="complemento" title="Escreva o complemento" class="form-control" size="30" maxlength="30" type="text">
+              </div>
+            </div>
+            <br>
+            
+            <div class="row">
+              <div class="col-md-4">
+                <label id="labelBairro" for="bairro" class="form-label">
+                  Bairro:
+                  <span class="required-asterisk" aria-hidden="true">*</span>
+                </label>
+                <input id="bairro" name="bairro" title="Escreva o bairro" class="form-control" size="70" maxlength="100" type="text" required>
+              </div>
+              <div class="col-md-4">
+                <label id="labelUf" for="uf" class="form-label">
+                  Estado:
+                  <span class="required-asterisk" aria-hidden="true">*</span>
+                </label>
+                  <select id="uf" name="uf" title="Escolha o estado" class="form-control" required>
+                    <option value="">[Selecione]</option>
+                  </select>
+              </div>
+              <div id="bloco-cidade" class="col-md-4">
+                <label for="municipio" id="labelCidade" class="form-label">Cidade:<span class="required-asterisk" aria-hidden="true">*</span></label>
+<select id="municipio" name="municipio" title="Escolha a cidade" class="form-control" required aria-label="Selecione uma cidade" aria-required="true" aria-invalid="false">
+  <option value="">[Selecione]</option>
+</select>
+              </div>
+            </div>
+            <br>
+            
+            <div class="row">
+              <div class="col-md-3">
+                <label id="labelCep" class="form-label" for="cep">CEP:<span class="required-asterisk" aria-hidden="true">*</span></label>
+                <input id="cep" name="cep" title="Escreva o CEP" class="form-control" size="10" maxlength="10" type="text" onkeyup="this.value=formatCEP(this.value);">
+              </div>
+            </div>
+            <hr>
+            
+            <div class="row">
+              <div class="col-md-12 espacamento-subtitulo">
+                <span class="visually-hidden">Inicio do registo da solicitação</span>
+                <h4 class="subtitulo">Solicitação</4>
+              </div>
+            </div>		
+            <div class="row">
+              <div class="col-md-3">
+                <label id="labelAssunto" for="assunto" class="form-label">Assunto:<span class="required-asterisk" aria-hidden="true">*</span></label>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <select id="assunto" name="assunto" title="Escolha o assunto" class="form-control" required>
+                            <option value="">[Selecione]</option>
+                            <option value="Assuntos Afro-Raciais">Assuntos Afro-Raciais</option>
+                            <option value="Comunicação Social">Comunicação Social</option>
+                            <option value="Cultura">Cultura</option>
+                            <option value="Defesa do Consumidor">Defesa do Consumidor</option>
+                            <option value="Desenvolvimento Econômico">Desenvolvimento Econômico</option>
+                            <option value="Desenvolvimento Social">Desenvolvimento Social</option>
+                            <option value="Educação">Educação</option>
+                            <option value="Esporte e Lazer">Esporte e Lazer</option>
+                            <option value="Finanças">Finanças</option>
+                            <option value="Gestão Estratégica">Gestão Estratégica</option>
+                            <option value="Governo">Governo</option>
+                            <option value="Habitação">Habitação</option>
+                            <option value="Meio Ambiente">Meio Ambiente</option>
+                            <option value="Obras">Obras</option>
+                            <option value="Outros">Outros</option>
+                            <option value="Planejamento e Desenv. Urbano">Planejamento e Desenv. Urbano</option>
+                            <option value="Plano Diretor">Plano Diretor</option>
+                            <option value="Portal">Portal</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Segurança Pública">Segurança Pública</option>
+                            <option value="Serviços Urbanos">Serviços Urbanos</option>
+                            <option value="Superintendência de Defesa Social">Superintendência de Defesa Social</option>
+                            <option value="Trânsito/Sinalização">Trânsito/Sinalização</option>
+                            <option value="Patrulha Ambiental">Patrulha Ambiental</option>
+                            <option value="Administração">Administração</option>
+                            <option value="Agropecuária e Abastecimento">Agropecuária e Abastecimento</option>
+                            <option value="Água e Esgoto/Dmae">Água e Esgoto/Dmae</option>
+                            <option value="Cesta básica/ SEDESTH">Cesta básica/ SEDESTH</option>
+                            <option value="Lei de acesso a informação/Portal Transparência">Lei de acesso a informação/Portal Transparência</option>
+                            <option value="Transportes">Transportes</option>
+                            <option value="Transportes/Fiscalização">Transportes/Fiscalização</option>
+                            <option value="Trânsito">Trânsito</option>
+                          </select>
+                      </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div class="col-md-2">
+                <label id="labelPrioridade" class="form-label">Prioridade:<span class="required-asterisk" aria-hidden="true">*</span></label>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <select id="prioridades" name="Escolha a prioridades" title="Prioridades" class="form-control" required>
+                              <option value="">[Selecione]</option>
+                              <option value="Alta">Alta</option>
+                              <option value="Baixa">Baixa</option>
+                              <option value="Normal">Normal</option>
+                            </select>
+                          </span>
+                        </td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+              <div class="col-md-2">
+                <label id="labelTipoComentario" for="tipoComentario" class="form-label">Tipo de Comentário:<span class="required-asterisk" aria-hidden="true">*</span></label>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                            <select id="tipoComentario" name="tipoComentario" title="Escolha o tipo de Comentário" class="form-control" required>
+                              <option value="">[Selecione]</option>
+                              <option value="Reclamação">Reclamação</option>
+                              <option value="Sugestão">Sugestão</option>
+                              <option value="Pergunta">Pergunta</option>
+                            </select>
+                        </td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+              <div class="col-md-3">
+                <label id="labelTipoResposta" for="tipoResposta" class="form-label">Deseja receber resposta através de:<span class="required-asterisk" aria-hidden="true">*</span></label>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <select id="tipoResposta2" name="tipoResposta2" title="escolha como receber a resposta" class="form-control" required>
+                          <option selected="">[Selecione]</option>
+                          <option value="E-mail">E-mail</option>
+                          <option value="Telefone">Telefone</option>
+                        </select>   
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <br>
+            
+            <div class="row">
+              <div class="col-md-8">
+                <label id="labelMensagem" for="mensagem" class="form-label">Mensagem:<span class="required-asterisk" aria-hidden="true">*</span></label>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                        <textarea id="mensagem" name="mensagem" title="Escreva a mensagem" class="form-control" cols="120" rows="4">
+                        </textarea>
+                    </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-8">
+                *Número máximo de caracteres permitidos são: 1.000. Sendo insuficiente, favor anexar arquivo com a mensagem.
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-5">
+                <label for="arquivo" id="labelAnexo" class="form-label">Anexar Arquivo:</label>
+                <input type="file" name="arquivo" id="arquivo" class="form-control">
+                <span aria-label="Clique aqui para selecionar um arquivo a ser anexado">Selecionar arquivo</span>            
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h5>Clique 'Enviar Arquivo...' para anexar o(s) arquivo(s) do Fale Conosco</h5>
+              </div> 
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-primary" title="Enviar sua Solicitação">Enviar Solicitação</button>
+            <br><br><br><br>
+          </div>
+
+        </form>
+     </div>
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/popper.js/dist/popper.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/bootstrap/js/src/app.js"></script>
+</body>
+</html>
