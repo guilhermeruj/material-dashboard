@@ -128,7 +128,7 @@ if (!isset($_SESSION["nome"]) || !isset($_SESSION["matricula"])) {
             $arquivo_tipo = $row["arquivo_tipo"];
             $arquivo_tamanho = $row["arquivo_tamanho"];
             $arquivo_tmp = $row["arquivo_tmp"];
-            $status = $row["status"]
+            $status = $row["situacao"]
 
           ?>
 
@@ -170,7 +170,29 @@ if (!isset($_SESSION["nome"]) || !isset($_SESSION["matricula"])) {
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Prioridade:</strong> &nbsp; <?php echo $prioridades; ?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tipo de comentario:</strong> &nbsp; <?php echo  $tipoComentario; ?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Por qual caminho responder:</strong> &nbsp; <?php echo  $tipoResposta2; ?></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Arquivo em Anexo:</strong> &nbsp; <?php echo $arquivo_nome; ?></li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Anexo:
+                        <script>
+                          // Passa o nome do arquivo para uma variável JavaScript
+                          var nomeDoArquivo = "<?php echo $arquivo_nome; ?>";
+
+                          // Função para download do arquivo
+                          function downloadFile(nomeArquivo) {
+                            // Cria um elemento link com o atributo de download
+                            var link = document.createElement("a");
+                            link.download = nomeArquivo;
+
+                            // Define a URL do arquivo a ser baixado
+                            link.href = "upload/" + nomeArquivo;
+
+                            // Adiciona o link ao DOM e simula o clique
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                          }
+                        </script>
+                        <?php
+                        echo '<a class="nav-link" href="#" onclick="downloadFile(nomeDoArquivo)"></strong> &nbsp;' . $arquivo_nome . '</a>';
+                        ?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Status:</strong> &nbsp; <?php echo  $status; ?></li>
                     <form method="POST" action="../back-php/alterastatus.php">
                       <div class="col-xl-4 col-lg-5 col-md-7">

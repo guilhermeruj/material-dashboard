@@ -39,13 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifica se o arquivo foi enviado
     if (isset($_FILES['arquivo'])) {
         $arquivo = $_FILES['arquivo'];
-        $arquivo_nome = $arquivo['name'];
+        $arquivo_nome = basename($arquivo['name']); // obtém apenas o nome do arquivo sem o caminho
         $arquivo_tipo = $arquivo['type'];
         $arquivo_tamanho = $arquivo['size'];
         $arquivo_tmp = $arquivo['tmp_name'];
 
         // Adiciona a pasta de upload ao nome do arquivo
-        $diretorio_upload = '../uploads';
+        $diretorio_upload = '../pages/uploads/';
         $arquivo_nome = $diretorio_upload . $arquivo_nome;
 
         // Move o arquivo para a pasta de upload

@@ -1,7 +1,7 @@
 <?php
 
 // Configurações de conexão com o banco de dados
-// $host = "localhost"; // Nome do servidor do banco de dados
+$host = "localhost"; // Nome do servidor do banco de dados
 $usuario = "saeara69_gkdata"; // Nome do usuário do banco de dados
 $senha = "kjgLPzz^};BI"; // Senha do usuário do banco de dados
 $banco = "saeara69_adm"; // Nome do banco de dados

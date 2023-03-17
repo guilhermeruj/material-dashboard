@@ -35,28 +35,30 @@
               </div>
             </div>
             
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-12">
                 <b class="subtitulo" style="color: red;">Informações:</b>
               </div>
-            </div>
+            </div> -->
             <form>
               <div class="row mb-3">
-                <div class="col-md-12">
-                  <p class="fw-bold mb-2">Identificação:</p>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" id="anonimato" name="identificacao" value="anonimato" required>
-                    <label class="form-check-label" for="anonimato">Desejo anonimato</label>
+                <fieldset>
+                  <legend>Identificação:</legend>
+                  <div class="col-md-12">
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="anonimato" name="identificacao" value="anonimato" required>
+                          <label class="form-check-label" for="anonimato">Desejo anonimato</label>
+                      </div>
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="sigilo" name="identificacao" value="sigilo">
+                          <label class="form-check-label" for="sigilo">Desejo sigilo dos dados que me identificam</label>
+                      </div>
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" id="identificar" name="identificacao" value="identificar">
+                          <label class="form-check-label" for="identificar">Vou me identificar</label>
+                      </div>
                   </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" id="sigilo" name="identificacao" value="sigilo">
-                    <label class="form-check-label" for="sigilo">Desejo sigilo dos dados que me identificam</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" id="identificar" name="identificacao" value="identificar">
-                    <label class="form-check-label" for="identificar">Vou me identificar</label>
-                  </div>
-                </div>
+              </fieldset>
               </div>
               <hr class="mb-4">
               <div class="row mb-3">
@@ -156,7 +158,7 @@
                   </select>
               </div>
               <div id="bloco-cidade" class="col-md-4">
-                <label id="labelCidade" class="form-label" >Cidade:</label>
+                <label id="labelCidade" class="form-label" for="municipio">Cidade:</label>
                 <select id="municipio" name="municipio" title="Município" class="form-control" required>
                   <option value="">[Selecione]</option>
                 </select>

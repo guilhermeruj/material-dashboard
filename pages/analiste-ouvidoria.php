@@ -94,7 +94,7 @@ if (!isset($_SESSION["nome"]) || !isset($_SESSION["matricula"])) {
           </div>
 
           <?php
-          // Executa a consulta SQL
+          // Executa a consulta SQL 
           // Recebe o ID do protocolo via GET
           $protocolo = $_GET['protocolo'];
 
@@ -170,8 +170,29 @@ if (!isset($_SESSION["nome"]) || !isset($_SESSION["matricula"])) {
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">E-mail:</strong> &nbsp; <?php echo $email; ?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Endereço:</strong> &nbsp; <?php echo $logradouro . ", " . $numero . " - " . $complemento . " - " . $bairro . " - " . $estado . " - " . $cidade . " - " . $cep; ?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Anexo:
+
+                        <script>
+                          // Passa o nome do arquivo para uma variável JavaScript
+                          var nomeDoArquivo = "<?php echo $anexo; ?>";
+
+                          // Função para download do arquivo
+                          function downloadFile(nomeArquivo) {
+                            // Cria um elemento link com o atributo de download
+                            var link = document.createElement("a");
+                            link.download = nomeArquivo;
+
+                            // Define a URL do arquivo a ser baixado
+                            link.href = "upload/" + nomeArquivo;
+
+                            // Adiciona o link ao DOM e simula o clique
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                          }
+                        </script>
+
                         <?php
-                        echo '<a class="nav-link" href="../back-php/dowloandax.php?anexo=' . $anexo . '"></strong> &nbsp;' . $anexo . '</li>';
+                        echo '<a class="nav-link" href="#" onclick="downloadFile(nomeDoArquivo)"></strong> &nbsp;' . $anexo . '</a>';
                         ?>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Data de Registro:</strong> &nbsp; <?php echo $data_registro; ?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Status:</strong> &nbsp; <?php echo $status; ?></li>
