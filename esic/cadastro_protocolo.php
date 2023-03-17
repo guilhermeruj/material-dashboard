@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $arquivo_tmp = $arquivo['tmp_name'];
 
         // Adiciona a pasta de upload ao nome do arquivo
-        $diretorio_upload = './uploads/';
+        $diretorio_upload = '../uploads';
         $arquivo_nome = $diretorio_upload . $arquivo_nome;
 
         // Move o arquivo para a pasta de upload

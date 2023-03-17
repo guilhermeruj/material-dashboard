@@ -5,7 +5,7 @@ require_once "./back_php/conect.php";
 if (!empty($_FILES['anexo']['name'])) {
 
     // Definir o caminho da pasta de uploads
-    $upload_dir = "./uploads/";
+    $upload_dir = "../uploads";
 
     // Gerar um nome único para o arquivo
     $upload_file = $upload_dir . uniqid() . '_' . basename($_FILES['anexo']['name']);
